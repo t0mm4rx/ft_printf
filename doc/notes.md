@@ -22,10 +22,23 @@ Par default, espaces avant.
 Si flag -, espaces apres.
 Si flag 0 et nombre, complete avec des 0
 
+## Size
+String --> length
+Int --> nombre de 0 avant
+Hexa --> nombre de 0 avant
+
+## Valeur de retour
+nm de char printed
+
 ## Cas foireux
 "%%"
 "%"
-"%x" sans arguiments
+"%1"
+"%x" sans arguments
 gestion des erreurs
 width < len(s)
 flag avec type incompatible
+chaine vide, (null)
+flags non geres
+gerer etoiles
+% en fin de chaine

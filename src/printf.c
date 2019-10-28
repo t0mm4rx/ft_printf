@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 15:17:36 by tmarx             #+#    #+#             */
+/*   Updated: 2019/10/28 15:17:37 by tmarx            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 int		ft_printf(const char *format, ...)
@@ -47,7 +59,4 @@ void	process_format(char **ptr, unsigned int *char_printed)
 	}
 	type = **ptr;
 	*ptr = *ptr + 1;
-	printf("Width: %d\n", width);
-	printf("Size: %d\n", size);
-	printf("Type: %c\n", type);
 }

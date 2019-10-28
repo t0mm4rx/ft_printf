@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 14:51:47 by tmarx             #+#    #+#             */
+/*   Updated: 2019/10/28 14:52:17 by tmarx            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "printf.h"
+
 int			ft_atoi(const char *str)
 {
 	int sign;
@@ -24,4 +38,11 @@ int			ft_atoi(const char *str)
 			return (result * sign);
 	}
 	return (result * sign);
+}
+
+int			min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

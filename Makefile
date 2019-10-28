@@ -6,7 +6,7 @@
 #    By: tmarx <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/14 17:45:06 by tmarx             #+#    #+#              #
-#    Updated: 2019/10/14 18:02:30 by tmarx            ###   ########.fr        #
+#    Updated: 2019/10/28 14:36:26 by tmarx            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,12 @@ TEST_FLAG=-g3 -fsanitize=address
 LIB=libftprintf.a
 SRC=./src/printf.c\
 	./src/str_utils.c\
-	./src/utils.c
+	./src/utils.c\
+	./src/print_types.c
 OBJ=./obj/printf.o\
 	./obj/str_utils.o\
-	./obj/utils.o
+	./obj/utils.o\
+	./obj/print_types.o
 
 FLAGS=-Werror -Wextra -Werror
 

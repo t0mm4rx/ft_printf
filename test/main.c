@@ -3,8 +3,10 @@
 
 int main ()
 {
-	//int a = printf("Hello !\n");
-	//int b = ft_printf("Hello%100 !\n");
-	//printf("a: %d, b: %d\n", a, b);
+	int a = printf("%-10c", 'c');
+	printf("\n");
+	int flags[2] = {1, 0};
+	int b = putchar2('c', 10, 0, flags);
+	printf("\n%d\n%d", a, b);
 
 }

@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/10/28 15:18:32 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/10/28 15:40:53 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,28 @@ unsigned int	putstr(char *s, unsigned int width, unsigned int size,
 			ft_putchar((flags[1] ? '0' : ' '));
 	}
 	return (fill + length);
+}
+
+unsigned int	putchar2(char c, unsigned int width, unsigned int size,
+		int flags[2])
+{
+	unsigned int i;
+	unsigned int fill;
+
+	i = 0;
+	fill = 0;
+	if (width > 1)
+		fill = width - 1;
+	if (!flags[0] && fill > 0)
+	{
+		while (i++ < fill)
+			ft_putchar((flags[1] ? '0' : ' '));
+	}
+	ft_putchar(c);
+	if (flags[0] && fill > 0)
+	{
+		while (i++ < fill)
+			ft_putchar((flags[1] ? '0' : ' '));
+	}(void)size;
+	return (fill + 1);
 }

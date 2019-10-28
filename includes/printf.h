@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:14 by tmarx             #+#    #+#             */
-/*   Updated: 2019/10/28 15:18:21 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/10/28 15:32:42 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ unsigned int		putstr(char *s, unsigned int width, unsigned int size,
 		int flags[2]);
 unsigned int		ft_strlen(char *str);
 int					min(int a, int b);
+unsigned int		putchar2(char c, unsigned int width, unsigned int size,
+		int flags[2]);
 #endif

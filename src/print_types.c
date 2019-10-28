@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/10/28 15:40:53 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/10/28 19:13:35 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ unsigned int	putchar2(char c, unsigned int width, unsigned int size,
 	{
 		while (i++ < fill)
 			ft_putchar((flags[1] ? '0' : ' '));
-	}(void)size;
+	}
+	(void)size;
 	return (fill + 1);
 }

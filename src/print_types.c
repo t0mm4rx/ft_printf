@@ -6,11 +6,12 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/10/28 19:13:35 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/10/29 16:06:37 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+#include "libft.h"
 
 unsigned int	putstr(char *s, unsigned int width, unsigned int size,
 		int flags[2])
@@ -28,21 +29,21 @@ unsigned int	putstr(char *s, unsigned int width, unsigned int size,
 	if (!flags[0] && fill > 0)
 	{
 		while (i++ < fill)
-			ft_putchar((flags[1] ? '0' : ' '));
+			ft_putchar_fd((flags[1] ? '0' : ' '), 1);
 	}
 	i = 0;
 	while (i < length)
-		ft_putchar(s[i++]);
+		ft_putchar_fd(s[i++], 1);
 	i = 0;
 	if (flags[0] && fill > 0)
 	{
 		while (i++ < fill)
-			ft_putchar((flags[1] ? '0' : ' '));
+			ft_putchar_fd((flags[1] ? '0' : ' '), 1);
 	}
 	return (fill + length);
 }
 
-unsigned int	putchar2(char c, unsigned int width, unsigned int size,
+unsigned int	putchar_(char c, unsigned int width, unsigned int size,
 		int flags[2])
 {
 	unsigned int i;
@@ -55,14 +56,52 @@ unsigned int	putchar2(char c, unsigned int width, unsigned int size,
 	if (!flags[0] && fill > 0)
 	{
 		while (i++ < fill)
-			ft_putchar((flags[1] ? '0' : ' '));
+			ft_putchar_fd((flags[1] ? '0' : ' '), 1);
 	}
-	ft_putchar(c);
+	ft_putchar_fd(c, 1);
 	if (flags[0] && fill > 0)
 	{
 		while (i++ < fill)
-			ft_putchar((flags[1] ? '0' : ' '));
+			ft_putchar_fd((flags[1] ? '0' : ' '), 1);
 	}
 	(void)size;
 	return (fill + 1);
+}
+
+unsigned int	putnbr(int n, unsigned int width, unsigned int size,
+		int flags[2])
+{
+	char			*a;
+	int				fill_z;
+	int				fill_s;
+	int				i;
+	unsigned int	s;
+
+	if (size <= 0 && n == 0)
+		return (0);
+	a = ft_itoa(abs_(n));
+	s = ft_strlen(a);
+	if (size > s)
+		fill_z = size - s;
+	else
+		fill_z = 0;
+	if (width > fill_z + s)
+		fill_s = width - (s + fill_z) - (n < 0);
+	else
+		fill_s = 0;
+	i = 0;
+	while (!flags[0] && i++ < fill_s)
+		ft_putchar_fd(' ', 1);
+	if (n < 0)
+		ft_putchar_fd('-', 1);
+	i = 0;
+	while (i++ < fill_z)
+		ft_putchar_fd('0', 1);
+	ft_putstr_fd(a, 1);
+	i = 0;
+	while (flags[0] && i++ < fill_s)
+		ft_putchar_fd(' ', 1);
+	free(a);
+	printf("\n%d\n", fill_z);
+	return (s + fill_z + fill_s);
 }

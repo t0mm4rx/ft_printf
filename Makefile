@@ -6,13 +6,17 @@
 #    By: tmarx <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/14 17:45:06 by tmarx             #+#    #+#              #
-#    Updated: 2019/10/29 11:28:16 by tmarx            ###   ########.fr        #
+#    Updated: 2019/11/01 09:47:57 by tmarx            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TEST_SRC=./test/main.c
 TEST_BIN=./bin/test
 TEST_FLAGS=-g3 -fsanitize=address
+
+LIBFT=libft.a
+LIBFT_SRC=${wildcard libft/*}
+LIBFT_OBJ=${LIBFT_SRC:%.c=%.o}
 
 LIB=libftprintf.a
 SRC=./src/printf.c\
@@ -24,7 +28,7 @@ OBJ=./obj/printf.o\
 	./obj/utils.o\
 	./obj/print_types.o
 
-FLAGS=-Werror -Wextra -Werror -I./includes/
+FLAGS=-Wall -Wextra -Werror -I./includes/
 
 all: ${LIB}
 
@@ -40,15 +44,15 @@ norme:
 ${TEST_BIN}: ${TEST_SRC} ${SRC}
 	@echo "\033[0;32m=== Making the test binary... ===\033[0m"
 	mkdir -p ./bin/
-	gcc ${TEST_SRC} ${FLAGS} ${TEST_FLAGS} -L. -lftprintf -I./includes/ -o ${TEST_BIN} -L./includes/ -lft
+	gcc ${TEST_SRC} ${FLAGS} ${TEST_FLAGS} -L. -lftprintf -I./includes/ -o ${TEST_BIN} -L. -lft
 
 ${LIB}: ${OBJ}
 	@echo "\033[0;32m=== Making the lib... ===\033[0m"
 	ar rcs ${LIB} ${OBJ}
 
-./obj/%.o: ./src/%.c
+./obj/%.o: ./src/%.c ${LIBFT}
 	mkdir -p ./obj/
-	gcc ${FLAGS} -c $< -o $@
+	gcc ${FLAGS} -c $< -o $@ -L. -lft
 
 re: fclean all
 
@@ -59,6 +63,15 @@ clean:
 fclean: clean
 	@echo "\033[0;32m=== Cleanup... ===\033[0m"
 	rm -rf ./bin/*
+	rm -rf ./libft/*.o
 	rm -rf ${LIB}
+	rm -rf ${LIBFT}
+
+./libft/%.o: ./libft/%.c
+	gcc ${FLAGS} -I./includes/ -c $< -o $@
+
+${LIBFT}: ${LIBFT_OBJ}
+	@echo "\033[0;32m=== Making libft... ===\033[0m"
+	ar rcs ${LIBFT} ${LIBFT_OBJ}
 
 .PHONY: test re

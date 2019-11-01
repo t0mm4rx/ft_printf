@@ -6,11 +6,12 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:36 by tmarx             #+#    #+#             */
-/*   Updated: 2019/10/28 15:17:37 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/01 14:51:07 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+#include "libft.h"
 
 int		ft_printf(const char *format, ...)
 {
@@ -26,7 +27,7 @@ int		ft_printf(const char *format, ...)
 		if (*ptr != '%')
 		{
 			char_printed++;
-			ft_putchar(*(ptr++));
+			ft_putchar_fd(*(ptr++), 1);
 		}
 		else
 			process_format(&ptr, &char_printed);

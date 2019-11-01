@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/10/29 16:06:37 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/01 16:19:35 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,16 @@ unsigned int	putnbr(int n, unsigned int width, unsigned int size,
 	while (flags[0] && i++ < fill_s)
 		ft_putchar_fd(' ', 1);
 	free(a);
-	printf("\n%d\n", fill_z);
 	return (s + fill_z + fill_s);
+}
+
+unsigned int	putunbr(int n, unsigned int width, unsigned int size,
+		int flags[2])
+{
+	long int nb;
+
+	nb = (long int)n;
+	if (n < 0)
+		nb = 4294967296 + n;
+	return (putnbr(((int)nb), width, size, flags));
 }

@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:14 by tmarx             #+#    #+#             */
-/*   Updated: 2019/10/29 15:28:42 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/01 15:56:12 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int					min(int a, int b);
 unsigned int		putchar_(char c, unsigned int width, unsigned int size,
 		int flags[2]);
 unsigned int		putnbr(int n, unsigned int width, unsigned int size,
+		int flags[2]);
+unsigned int		putunbr(int n, unsigned int width, unsigned int size,
 		int flags[2]);
 unsigned int		abs_(int n);
 #endif

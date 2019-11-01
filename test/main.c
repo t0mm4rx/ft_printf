@@ -5,14 +5,14 @@
 int main ()
 {
 
-	int nb = 10;
-	int size = -89;
-	int width = 0;
+	int nb = -50;
+	int size = 5;
+	int width = 100;
 
 	int flags[2] = {0, 0};
-	int a = printf("%*.*d", width, size, nb);
+	int a = printf("%*.*u", width, size, nb);
 	printf("|\n");
-	int b = putnbr(nb, width, size, flags);
+	int b = putunbr(nb, width, size, flags);
 	printf("|\n");
 	printf("%d / %d\n", a, b);
 }

@@ -3,14 +3,15 @@
 
 ## Types
 cspdiuxX%
-c: char
-s: char*
+c: char  V
+s: char*  V
 p: void* --> 0x7ffeeb7d79cc
-d: int --> == i
-i: int
-u: unsigned
-x: hexa non signe en minuscules --> 7a
-X: hexa non signe en majuscules --> 7A
+d: int --> == i  V
+i: int  V
+u: unsigned  V
+x: hexa non signe en minuscules --> 7a  V
+X: hexa non signe en majuscules --> 7A  V
+%: symbole % <-- putchar
 
 ## Flags
 "-0.*"

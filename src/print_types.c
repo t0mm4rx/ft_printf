@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/04 09:45:43 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/04 10:42:22 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ unsigned int	putnbr(long int n, unsigned int width, unsigned int size,
 	unsigned int	s;
 
 	if (size <= 0 && n == 0)
-		return (0);
-	a = ft_itoa(abs_(n));
+		a = ft_calloc(1, sizeof(char));
+	else
+		a = ft_itoa(abs_(n));
 	s = ft_strlen(a);
 	if (size > s)
 		fill_z = size - s;
@@ -114,4 +115,43 @@ unsigned int	putunbr(long int n, unsigned int width, unsigned int size,
 	if (n < 0)
 		nb = 4294967296 + n;
 	return (putnbr(nb, width, size, flags));
+}
+unsigned int	puthex(long int n, unsigned int width, unsigned int size,
+		int flags[2], int caps)
+{
+	char			*a;
+	int				fill_z;
+	int				fill_s;
+	int				i;
+	unsigned int	s;
+
+	if (n < 0)
+		n = 4294967296 + n;
+	if (size <= 0 && n == 0)
+		a = ft_calloc(1, sizeof(char));
+	else
+		a = ft_itoa_hex(abs_(n), caps);
+	s = ft_strlen(a);
+	if (size > s)
+		fill_z = size - s;
+	else
+		fill_z = 0;
+	if (width > fill_z + s)
+		fill_s = width - (s + fill_z) - (n < 0);
+	else
+		fill_s = 0;
+	i = 0;
+	while (!flags[0] && i++ < fill_s)
+		ft_putchar_fd(' ', 1);
+	if (n < 0)
+		ft_putchar_fd('-', 1);
+	i = 0;
+	while (i++ < fill_z)
+		ft_putchar_fd('0', 1);
+	ft_putstr_fd(a, 1);
+	i = 0;
+	while (flags[0] && i++ < fill_s)
+		ft_putchar_fd(' ', 1);
+	free(a);
+	return (s + fill_z + fill_s);
 }

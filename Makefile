@@ -6,7 +6,7 @@
 #    By: tmarx <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/14 17:45:06 by tmarx             #+#    #+#              #
-#    Updated: 2019/11/01 15:44:12 by tmarx            ###   ########.fr        #
+#    Updated: 2019/11/04 10:56:33 by tmarx            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,15 @@ LIB=libftprintf.a
 SRC=./src/printf.c\
 	./src/str_utils.c\
 	./src/utils.c\
-	./src/print_types.c
+	./src/print_types.c\
+	./src/hex.c\
+	./src/print_types2.c
 OBJ=./obj/printf.o\
 	./obj/str_utils.o\
 	./obj/utils.o\
-	./obj/print_types.o
+	./obj/print_types.o\
+	./obj/hex.o\
+	./obj/print_types2.o
 
 FLAGS=-Wall -Wextra -Werror -I./includes/
 
@@ -40,6 +44,8 @@ norme:
 	@echo "\033[0;32m=== Checking the norme... ===\033[0m"
 	@norminette ./src/*.c
 	@norminette ./includes/*.h
+	@cat ./src/* | grep stdio.h
+	@cat ./src/* | grep printf
 
 ${TEST_BIN}: ${TEST_SRC} ${SRC}
 	@echo "\033[0;32m=== Making the test binary... ===\033[0m"

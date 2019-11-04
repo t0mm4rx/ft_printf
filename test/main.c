@@ -5,7 +5,7 @@
 int main ()
 {
 
-	int nb = -50;
+	int nb = -150000000;
 	int size = 5;
 	int width = 100;
 

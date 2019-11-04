@@ -6,13 +6,13 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 12:36:59 by tmarx             #+#    #+#             */
-/*   Updated: 2019/10/16 08:29:08 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/04 09:43:27 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_n_in_ptr(char *ptr, int n, int len)
+static void	ft_n_in_ptr(char *ptr, long int n, int len)
 {
 	int i;
 
@@ -35,12 +35,10 @@ static void	ft_n_in_ptr(char *ptr, int n, int len)
 		ft_n_in_ptr(ptr, n / 10, len);
 }
 
-static int	ft_get_number_length(int n)
+static int	ft_get_number_length(long int n)
 {
 	int len;
 
-	if (n <= -2147483648)
-		return (11);
 	len = 0;
 	if (n <= 0)
 		len++;
@@ -52,19 +50,13 @@ static int	ft_get_number_length(int n)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(long int n)
 {
 	char	*res;
 	int		len;
 
 	len = ft_get_number_length(n);
 	res = ft_calloc(sizeof(char), len + 1);
-	if (n <= -2147483648)
-	{
-		res = ft_calloc(sizeof(char), 12);
-		ft_memcpy(res, "-2147483648", 11);
-		return (res);
-	}
 	ft_n_in_ptr(res, n, len);
 	return (res);
 }

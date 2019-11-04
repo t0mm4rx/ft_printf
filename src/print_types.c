@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/01 16:19:35 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/04 09:45:43 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ unsigned int	putchar_(char c, unsigned int width, unsigned int size,
 	return (fill + 1);
 }
 
-unsigned int	putnbr(int n, unsigned int width, unsigned int size,
+unsigned int	putnbr(long int n, unsigned int width, unsigned int size,
 		int flags[2])
 {
 	char			*a;
@@ -105,13 +105,13 @@ unsigned int	putnbr(int n, unsigned int width, unsigned int size,
 	return (s + fill_z + fill_s);
 }
 
-unsigned int	putunbr(int n, unsigned int width, unsigned int size,
+unsigned int	putunbr(long int n, unsigned int width, unsigned int size,
 		int flags[2])
 {
 	long int nb;
 
-	nb = (long int)n;
+	nb = n;
 	if (n < 0)
 		nb = 4294967296 + n;
-	return (putnbr(((int)nb), width, size, flags));
+	return (putnbr(nb, width, size, flags));
 }

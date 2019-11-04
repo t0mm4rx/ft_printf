@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/04 10:42:22 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/04 11:03:02 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ unsigned int	putunbr(long int n, unsigned int width, unsigned int size,
 		nb = 4294967296 + n;
 	return (putnbr(nb, width, size, flags));
 }
-unsigned int	puthex(long int n, unsigned int width, unsigned int size,
+unsigned int	puthex(unsigned long int n, unsigned int width, unsigned int size,
 		int flags[2], int caps)
 {
 	char			*a;

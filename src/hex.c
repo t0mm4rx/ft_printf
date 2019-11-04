@@ -6,14 +6,14 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:59:59 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/04 10:46:19 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/04 11:02:20 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "printf.h"
 
-static void	ft_n_in_ptr_hex(char *ptr, long int n, int len, int caps)
+static void	ft_n_in_ptr_hex(char *ptr, unsigned long int n, int len, int caps)
 {
 	int i;
 	char str[16] = "0123456789abcdef";
@@ -41,7 +41,7 @@ static void	ft_n_in_ptr_hex(char *ptr, long int n, int len, int caps)
 		ft_n_in_ptr_hex(ptr, n / 16, len, caps);
 }
 
-static int	ft_get_number_length_hex(long int n)
+static int	ft_get_number_length_hex(unsigned long int n)
 {
 	int len;
 
@@ -56,7 +56,7 @@ static int	ft_get_number_length_hex(long int n)
 	return (len);
 }
 
-char		*ft_itoa_hex(long int n, int caps)
+char		*ft_itoa_hex(unsigned long int n, int caps)
 {
 	char	*res;
 	int		len;

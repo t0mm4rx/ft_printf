@@ -7,7 +7,7 @@ int main ()
 
 	int nb = 10;
 	//int size = 10;
-	int width = 10;
+	int width = 30;
 
 	int flags[2] = {0, 0};
 	int a = printf("%*p", width, &nb);

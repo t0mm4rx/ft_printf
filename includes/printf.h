@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:14 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/04 11:02:41 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/05 11:16:47 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 # define PRINTF_H
 # include <unistd.h>
 # include <stdio.h>
+# include <stdarg.h>
 # include <stdlib.h>
 
 int					ft_printf(const char *format, ...);
-void				process_format(char **ptr, unsigned int *char_printed);
 int					isflag(const char c);
 unsigned int		putstr(char *s, unsigned int width, unsigned int size,
 		int flags[2]);
+void				get_flags(char **ptr, int flags[2]);
+int					get_width(char **ptr);
+int					get_size(char **ptr);
 int					min(int a, int b);
 unsigned int		putchar_(char c, unsigned int width, unsigned int size,
 		int flags[2]);
@@ -34,4 +37,11 @@ unsigned int		abs_(long int n);
 char				*ft_itoa_hex(unsigned long int n, int caps);
 unsigned int		putptr(void *ptr, unsigned int width, unsigned int size,
 		int flags[2]);
+void				replace_stars(char **format, ...);
+void				replace_first_star(char **src, int n);
+int					is_type(const char c);
+int					count_stars(char *str);
+int					handle_format(char **ptr);
+int					handle_format_star(char **ptr, int arg);
+int					handle_format_star2(char **ptr, int arg1, int arg2);
 #endif

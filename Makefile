@@ -6,7 +6,7 @@
 #    By: tmarx <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/14 17:45:06 by tmarx             #+#    #+#              #
-#    Updated: 2019/11/05 11:59:01 by tmarx            ###   ########.fr        #
+#    Updated: 2019/11/06 14:43:07 by tmarx            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ ${TEST_BIN}: ${TEST_SRC} ${SRC}
 
 ${LIB}: ${LIBFT} ${OBJ}
 	@echo "\033[0;32m=== Making the lib... ===\033[0m"
-	ar rcs ${LIB} ${OBJ}
+	ar rcs ${LIB} ${LIBFT_OBJ} ${OBJ}
 
 ./obj/%.o: ./src/%.c
 	mkdir -p ./obj/

@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:18:12 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/05 11:58:37 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/06 13:45:04 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		count_stars(char *str)
 
 	i = 0;
 	count = 0;
+	str++;
 	while (str[i] && !is_type(str[i]))
 		count += (str[i++] == '*');
 	return (count);
@@ -44,7 +45,7 @@ int		get_width(char **ptr)
 	int w;
 
 	if (!ft_isdigit(**ptr))
-		return (-1);
+		return (0);
 	w = ft_atoi(*ptr);
 	while (ft_isdigit(**ptr))
 		(*ptr)++;

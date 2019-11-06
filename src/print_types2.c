@@ -6,14 +6,14 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:52:30 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/04 13:10:39 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/06 11:46:09 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <printf.h>
 
-unsigned int	putptr(void *ptr, unsigned int width, unsigned int size,
+unsigned int	putptr(void *ptr, unsigned int width, int size,
 		int flags[2])
 {
 	char			*a;
@@ -25,7 +25,7 @@ unsigned int	putptr(void *ptr, unsigned int width, unsigned int size,
 	a = ft_itoa_hex((unsigned long int)ptr, 0);
 	a = ft_strjoin("0x", a);
 	s = ft_strlen(a);
-	if (size > s)
+	if (size > (int)s)
 		fill_z = size - s;
 	else
 		fill_z = 0;

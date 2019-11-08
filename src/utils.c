@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:51:47 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/04 09:40:51 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:43:26 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 int				min(int a, int b)
 {
 	if (a < b)
+		return (a);
+	return (b);
+}
+
+int				max(int a, int b)
+{
+	if (a > b)
 		return (a);
 	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/06 14:00:10 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:40:18 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ unsigned int	putstr(char *s, unsigned int width, int size,
 	unsigned int fill;
 	unsigned int i;
 
+	if (!s)
+		return (putstr("(null)", width, size, flags));
 	i = 0;
 	length = ft_strlen(s);
 	if (size >= 0)
@@ -79,13 +81,10 @@ unsigned int	putnbr(long int n, unsigned int width, int size,
 	int				i;
 	unsigned int	s;
 
-	if (size <= 0 && n == 0)
-		a = ft_calloc(1, sizeof(char));
-	else
-		a = ft_itoa(abs_(n));
+	a = ft_itoa(abs_(n));
 	s = ft_strlen(a);
-	if (size > (int)s)
-		fill_z = size - s;
+	if (size > (int)s || (flags[1] && width > s))
+		fill_z = min(size, width) - s;
 	else
 		fill_z = 0;
 	if (width > fill_z + s)
@@ -94,7 +93,7 @@ unsigned int	putnbr(long int n, unsigned int width, int size,
 		fill_s = 0;
 	i = 0;
 	while (!flags[0] && i++ < fill_s)
-		ft_putchar_fd(' ', 1);
+		ft_putchar_fd((!flags[1] ? ' ' : '0'), 1);
 	if (n < 0)
 		ft_putchar_fd('-', 1);
 	i = 0;
@@ -118,7 +117,7 @@ unsigned int	putunbr(long int n, unsigned int width, int size,
 		nb = 4294967296 + n;
 	return (putnbr(nb, width, size, flags));
 }
-unsigned int	puthex(unsigned long int n, unsigned int width, int size,
+unsigned int	puthex(long int n, unsigned int width, int size,
 		int flags[2], int caps)
 {
 	char			*a;
@@ -129,10 +128,7 @@ unsigned int	puthex(unsigned long int n, unsigned int width, int size,
 
 	if (n < 0)
 		n = 4294967296 + n;
-	if (size <= 0 && n == 0)
-		a = ft_calloc(1, sizeof(char));
-	else
-		a = ft_itoa_hex(abs_(n), caps);
+	a = ft_itoa_hex(abs_(n), caps);
 	s = ft_strlen(a);
 	if (size > (int)s)
 		fill_z = size - s;
@@ -144,7 +140,7 @@ unsigned int	puthex(unsigned long int n, unsigned int width, int size,
 		fill_s = 0;
 	i = 0;
 	while (!flags[0] && i++ < fill_s)
-		ft_putchar_fd(' ', 1);
+		ft_putchar_fd((!flags[1] ? ' ' : '0'), 1);
 	if (n < 0)
 		ft_putchar_fd('-', 1);
 	i = 0;

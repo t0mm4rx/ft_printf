@@ -19,7 +19,21 @@ int main ()
 
 	//printf("%d, %d\n", a, b);
 
-	ft_printf("%s\n", NULL);
-	printf("%s\n", NULL);
+	//ft_printf("%10s\n", NULL);
+	//printf("%10s\n", NULL);
 
+	//ft_printf("|%x| |%X|\n", 0, 0);
+	//printf("|%d| |%X|\n", 0, 0);
+
+	//ft_printf("%x  %x\n", -5, -2147483647);
+	//printf("%x  %x\n", -5, -2147483647);
+
+	ft_printf("%09i\n", 0);
+	printf("%09i\n", 0);
+
+	ft_printf("%020i\n", -2147483647);
+	printf("%020i\n", -2147483647);
+
+	ft_printf("%-6.4d\n", 1);
+	printf("%-6.4d\n", 1);
 }

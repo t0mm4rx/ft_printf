@@ -6,18 +6,20 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:59:59 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/04 11:02:20 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 17:30:36 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "printf.h"
 
-static void	ft_n_in_ptr_hex(char *ptr, unsigned long int n, int len, int caps)
+static char		g_str[16] = "0123456789abcdef";
+static char		g_str2[16] = "0123456789ABCDEF";
+
+static void		ft_n_in_ptr_hex(char *ptr, unsigned long int n,
+		int len, int caps)
 {
-	int i;
-	char str[16] = "0123456789abcdef";
-	char str2[16] = "0123456789ABCDEF";
+	int		i;
 
 	if (n == 0 && len == 1)
 	{
@@ -34,14 +36,14 @@ static void	ft_n_in_ptr_hex(char *ptr, unsigned long int n, int len, int caps)
 	while (ptr[i])
 		i--;
 	if (caps)
-		ptr[i] = str2[n % 16];
+		ptr[i] = g_str2[n % 16];
 	else
-		ptr[i] = str[n % 16];
+		ptr[i] = g_str[n % 16];
 	if (n / 16)
 		ft_n_in_ptr_hex(ptr, n / 16, len, caps);
 }
 
-static int	ft_get_number_length_hex(unsigned long int n)
+static int		ft_get_number_length_hex(unsigned long int n)
 {
 	int len;
 
@@ -56,7 +58,7 @@ static int	ft_get_number_length_hex(unsigned long int n)
 	return (len);
 }
 
-char		*ft_itoa_hex(unsigned long int n, int caps)
+char			*ft_itoa_hex(unsigned long int n, int caps)
 {
 	char	*res;
 	int		len;

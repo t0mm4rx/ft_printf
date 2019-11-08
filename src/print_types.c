@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/08 15:52:07 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 17:40:58 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ unsigned int	putnbr(long int n, unsigned int width, int size,
 }
 
 unsigned int	putunbr(long int n, unsigned int width, int size,
-		int flags[2])
+						int flags[2])
 {
 	long int nb;
 
@@ -121,7 +121,7 @@ unsigned int	putunbr(long int n, unsigned int width, int size,
 	return (putnbr(nb, width, size, flags));
 }
 unsigned int	puthex(long int n, unsigned int width, int size,
-		int flags[2], int caps)
+						int flags[2], int caps)
 {
 	char			*a;
 	int				fill_z;

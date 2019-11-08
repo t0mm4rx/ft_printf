@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:36 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/08 15:18:31 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 17:32:50 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	ft_printf(const char *format, ...)
 			if (count_stars(ptr) == 1)
 				count += handle_format_star(&ptr, va_arg(args, int), args);
 			if (count_stars(ptr) == 2)
-				count += handle_format_star2(&ptr, va_arg(args, int), va_arg(args, int), args);
+				count += handle_format_star2(&ptr, va_arg(args, int),
+						va_arg(args, int), args);
 		}
 	}
 	va_end(args);
@@ -59,8 +60,7 @@ int	handle_format(char **ptr, va_list args)
 	size = get_size(ptr);
 	type = **ptr;
 	(*ptr)++;
-	//printf(", w: %d, s: %d, f1: %d, f2: %d, t: %c\n", width, size, flags[0], flags[1], type);
-	return process(type, flags, width, size, args);
+	return (process(type, flags, width, size, args));
 }
 
 int	handle_format_star(char **ptr, int arg, va_list args)
@@ -88,8 +88,7 @@ int	handle_format_star(char **ptr, int arg, va_list args)
 		size = get_size(ptr);
 	type = **ptr;
 	(*ptr)++;
-	return process(type, flags, width, size, args);
-
+	return (process(type, flags, width, size, args));
 }
 
 int	handle_format_star2(char **ptr, int arg1, int arg2, va_list args)
@@ -102,7 +101,7 @@ int	handle_format_star2(char **ptr, int arg1, int arg2, va_list args)
 	(*ptr) += 3;
 	type = **ptr;
 	(*ptr)++;
-	return process(type, flags, arg1, arg2, args);
+	return (process(type, flags, arg1, arg2, args));
 }
 
 int	process(char type, int flags[2], int width, int size, va_list args)

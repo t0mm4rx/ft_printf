@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/06 16:40:18 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 15:52:07 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,22 @@ unsigned int	putnbr(long int n, unsigned int width, int size,
 	int				i;
 	unsigned int	s;
 
-	a = ft_itoa(abs_(n));
+	if (n == 0 && size == 0)
+		a = ft_calloc(1, sizeof(char));
+	else
+		a = ft_itoa(abs_(n));
 	s = ft_strlen(a);
-	if (size > (int)s || (flags[1] && width > s))
-		fill_z = min(size, width) - s;
-	else
-		fill_z = 0;
-	if (width > fill_z + s)
-		fill_s = width - (s + fill_z) - (n < 0);
-	else
-		fill_s = 0;
+	fill_z = 0;
+	fill_s = 0;
+	if (size > (int)s + (n < 0 ? 1 : 0))
+		fill_z = size - s;
+	if (flags[1] && width > s + (n < 0 ? 1 : 0) && size == -1)
+		fill_z = width - s - (n < 0 ? 1 : 0);
+	if (width > fill_z + s + (n < 0 ? 1 : 0))
+		fill_s = width - (fill_z + s + (n < 0 ? 1 : 0));
 	i = 0;
 	while (!flags[0] && i++ < fill_s)
-		ft_putchar_fd((!flags[1] ? ' ' : '0'), 1);
+		ft_putchar_fd(' ', 1);
 	if (n < 0)
 		ft_putchar_fd('-', 1);
 	i = 0;
@@ -128,19 +131,24 @@ unsigned int	puthex(long int n, unsigned int width, int size,
 
 	if (n < 0)
 		n = 4294967296 + n;
-	a = ft_itoa_hex(abs_(n), caps);
+	if (n == 0 && size == 0)
+		a = ft_calloc(1, sizeof(char));
+	else
+		a = ft_itoa_hex(abs_(n), caps);
 	s = ft_strlen(a);
+	fill_z = 0;
+	fill_s = 0;
 	if (size > (int)s)
 		fill_z = size - s;
-	else
-		fill_z = 0;
+	if (flags[1] && (int)width > size && size == -1)
+		fill_z = width - s;
 	if (width > fill_z + s)
 		fill_s = width - (s + fill_z) - (n < 0);
 	else
 		fill_s = 0;
 	i = 0;
 	while (!flags[0] && i++ < fill_s)
-		ft_putchar_fd((!flags[1] ? ' ' : '0'), 1);
+		ft_putchar_fd(' ', 1);
 	if (n < 0)
 		ft_putchar_fd('-', 1);
 	i = 0;

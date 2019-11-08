@@ -28,12 +28,21 @@ int main ()
 	//ft_printf("%x  %x\n", -5, -2147483647);
 	//printf("%x  %x\n", -5, -2147483647);
 
-	ft_printf("%09i\n", 0);
-	printf("%09i\n", 0);
+	//ft_printf("%09i\n", 0);
+	//printf("%09i\n", 0);
 
-	ft_printf("%020i\n", -2147483647);
-	printf("%020i\n", -2147483647);
+	//ft_printf("%020.5d\n", 10);
+	//printf("%020.5d\n", 10);
 
-	ft_printf("%-6.4d\n", 1);
-	printf("%-6.4d\n", 1);
+	//ft_printf("%-6.4d\n", 1);
+	//printf("%-6.4d\n", 1);
+
+	//printf("5KRX6R%-.0%6aknIsqWNkgDNBZNpU6hl0W\n");
+	//ft_printf("5KRX6R%-.0%6aknIsqWNkgDNBZNpU6hl0W\n");
+
+	//printf("%4dok\n", 0);
+	//ft_printf("%4dok\n", 0);
+
+	printf("wxF%09.5XLKqbmvDfa0\n", 0);
+	ft_printf("wxF%09.5XLKqbmvDfa0\n", 0);
 }

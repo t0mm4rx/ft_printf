@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:36 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/06 14:17:41 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 15:18:31 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,6 @@ int	process(char type, int flags[2], int width, int size, va_list args)
 	if (type == 'p')
 		return (putptr(va_arg(args, void*), width, size, flags));
 	if (type == '%')
-		return (putstr("%", width, size, flags));
+		return (putstr("%", width, 1, flags));
 	return (0);
 }

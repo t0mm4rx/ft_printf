@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/08 17:40:58 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 17:54:45 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ unsigned int	putstr(char *s, unsigned int width, int size,
 
 	if (!s)
 		return (putstr("(null)", width, size, flags));
-	i = 0;
 	length = ft_strlen(s);
 	if (size >= 0)
 		length = min((size < 0 ? -size : size), ft_strlen(s));
@@ -31,19 +30,13 @@ unsigned int	putstr(char *s, unsigned int width, int size,
 	else
 		fill = width - length;
 	if (!flags[0] && fill > 0)
-	{
-		while (i++ < fill)
-			ft_putchar_fd((flags[1] ? '0' : ' '), 1);
-	}
+		ft_putcharn_fd((flags[1] ? '0' : ' '), fill);
 	i = 0;
 	while (i < length)
 		ft_putchar_fd(s[i++], 1);
 	i = 0;
 	if (flags[0] && fill > 0)
-	{
-		while (i++ < fill)
-			ft_putchar_fd((flags[1] ? '0' : ' '), 1);
-	}
+		ft_putcharn_fd((flags[1] ? '0' : ' '), fill);
 	return (fill + length);
 }
 

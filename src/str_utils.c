@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:59 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/08 17:30:51 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 17:45:12 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,10 @@ int				is_type(const char c)
 {
 	return (c == 'i' || c == 'd' || c == 'p' || c == '%'
 			|| c == 'x' || c == 'X' || c == 's' || c == 'u' || c == 'c');
+}
+
+void			ft_putcharn_fd(char c, int n)
+{
+	while (n--)
+		ft_putchar_fd(c, 1);
 }

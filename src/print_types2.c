@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:52:30 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/06 11:46:09 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 17:49:42 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ unsigned int	putptr(void *ptr, unsigned int width, int size,
 	unsigned int	s;
 	int				fill_z;
 	int				fill_s;
-	int				i;
 
 	a = ft_itoa_hex((unsigned long int)ptr, 0);
 	a = ft_strjoin("0x", a);
@@ -33,16 +32,12 @@ unsigned int	putptr(void *ptr, unsigned int width, int size,
 		fill_s = width - (s + fill_z);
 	else
 		fill_s = 0;
-	i = 0;
-	while (!flags[0] && i++ < fill_s)
-		ft_putchar_fd(' ', 1);
-	i = 0;
-	while (i++ < fill_z)
-		ft_putchar_fd('0', 1);
+	if (!flags[0])
+		ft_putcharn_fd(' ', fill_s);
+	ft_putcharn_fd('0', fill_z);
 	ft_putstr_fd(a, 1);
-	i = 0;
-	while (flags[0] && i++ < fill_s)
-		ft_putchar_fd(' ', 1);
+	if (flags[0])
+		ft_putcharn_fd(' ', fill_s);
 	free(a);
 	return (s + fill_z + fill_s);
 }

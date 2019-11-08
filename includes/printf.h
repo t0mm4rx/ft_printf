@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:14 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/08 17:41:23 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 17:45:34 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ int					handle_format_star2(char **ptr, int arg1, int arg2,
 		va_list args);
 int					process(char type, int flags[2], int width, int size,
 		va_list args);
+void				ft_putcharn_fd(char c, int n);
 #endif

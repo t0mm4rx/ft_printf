@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/08 17:54:45 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/08 17:57:22 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ unsigned int	putnbr(long int n, unsigned int width, int size,
 	char			*a;
 	int				fill_z;
 	int				fill_s;
-	int				i;
 	unsigned int	s;
 
 	if (n == 0 && size == 0)
@@ -87,18 +86,14 @@ unsigned int	putnbr(long int n, unsigned int width, int size,
 		fill_z = width - s - (n < 0 ? 1 : 0);
 	if (width > fill_z + s + (n < 0 ? 1 : 0))
 		fill_s = width - (fill_z + s + (n < 0 ? 1 : 0));
-	i = 0;
-	while (!flags[0] && i++ < fill_s)
-		ft_putchar_fd(' ', 1);
+	if (!flags[0])
+		ft_putcharn_fd(' ', fill_s);
 	if (n < 0)
 		ft_putchar_fd('-', 1);
-	i = 0;
-	while (i++ < fill_z)
-		ft_putchar_fd('0', 1);
+	ft_putcharn_fd('0', fill_z);
 	ft_putstr_fd(a, 1);
-	i = 0;
-	while (flags[0] && i++ < fill_s)
-		ft_putchar_fd(' ', 1);
+	if (flags[0])
+		ft_putcharn_fd(' ', fill_s);
 	free(a);
 	return (s + fill_z + fill_s);
 }

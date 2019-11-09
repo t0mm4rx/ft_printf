@@ -43,6 +43,10 @@ int main ()
 	//printf("%4dok\n", 0);
 	//ft_printf("%4dok\n", 0);
 
-	printf("wxF%09.5XLKqbmvDfa0\n", 0);
-	ft_printf("wxF%09.5XLKqbmvDfa0\n", 0);
+	//printf("wxF%09.5XLKqbmvDfa0\n", 0);
+	//ft_printf("wxF%09.5XLKqbmvDfa0\n", 0);
+
+	int a = ft_printf("%%%0X\n", -2147483647);
+	int b = printf("%%%0X\n", -2147483647);
+	printf("%d / %d\n", a, b);
 }

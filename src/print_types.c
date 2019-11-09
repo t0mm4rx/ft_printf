@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/08 17:57:22 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/09 09:53:40 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ unsigned int	putnbr(long int n, unsigned int width, int size,
 	if (flags[0])
 		ft_putcharn_fd(' ', fill_s);
 	free(a);
-	return (s + fill_z + fill_s);
+	return (s + fill_z + fill_s + (n < 0));
 }
 
 unsigned int	putunbr(long int n, unsigned int width, int size,
@@ -147,5 +147,5 @@ unsigned int	puthex(long int n, unsigned int width, int size,
 	while (flags[0] && i++ < fill_s)
 		ft_putchar_fd(' ', 1);
 	free(a);
-	return (s + fill_z + fill_s);
+	return (s + (fill_z > 0 ? fill_z : 0) + (fill_s > 0 ? fill_s : 0));
 }

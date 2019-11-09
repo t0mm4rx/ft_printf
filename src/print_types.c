@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/09 09:53:40 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/09 10:52:48 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,11 @@ unsigned int	putnbr(long int n, unsigned int width, int size,
 		fill_z = width - s - (n < 0 ? 1 : 0);
 	if (width > fill_z + s + (n < 0 ? 1 : 0))
 		fill_s = width - (fill_z + s + (n < 0 ? 1 : 0));
-	if (!flags[0])
-		ft_putcharn_fd(' ', fill_s);
-	if (n < 0)
-		ft_putchar_fd('-', 1);
+	ft_putcharn_fd(' ', (!flags[0] ? fill_s : 0));
+	ft_putcharn_fd('-', (n < 0));
 	ft_putcharn_fd('0', fill_z);
 	ft_putstr_fd(a, 1);
-	if (flags[0])
-		ft_putcharn_fd(' ', fill_s);
+	ft_putcharn_fd(' ', (flags[0] ? fill_s : 0));
 	free(a);
 	return (s + fill_z + fill_s + (n < 0));
 }
@@ -108,21 +105,18 @@ unsigned int	putunbr(long int n, unsigned int width, int size,
 		nb = 4294967296 + n;
 	return (putnbr(nb, width, size, flags));
 }
+
 unsigned int	puthex(long int n, unsigned int width, int size,
 						int flags[2], int caps)
 {
 	char			*a;
 	int				fill_z;
 	int				fill_s;
-	int				i;
 	unsigned int	s;
 
-	if (n < 0)
-		n = 4294967296 + n;
-	if (n == 0 && size == 0)
-		a = ft_calloc(1, sizeof(char));
-	else
-		a = ft_itoa_hex(abs_(n), caps);
+	n = (n < 0 ? 4294967296 + n : n);
+	a = ((n == 0 && size == 0) ? ft_calloc(1, sizeof(char)) :
+			ft_itoa_hex(abs_(n), caps));
 	s = ft_strlen(a);
 	fill_z = 0;
 	fill_s = 0;
@@ -134,18 +128,10 @@ unsigned int	puthex(long int n, unsigned int width, int size,
 		fill_s = width - (s + fill_z) - (n < 0);
 	else
 		fill_s = 0;
-	i = 0;
-	while (!flags[0] && i++ < fill_s)
-		ft_putchar_fd(' ', 1);
-	if (n < 0)
-		ft_putchar_fd('-', 1);
-	i = 0;
-	while (i++ < fill_z)
-		ft_putchar_fd('0', 1);
+	ft_putcharn_fd(' ', (!flags[0] ? fill_s : 0));
+	ft_putcharn_fd('0', fill_z);
 	ft_putstr_fd(a, 1);
-	i = 0;
-	while (flags[0] && i++ < fill_s)
-		ft_putchar_fd(' ', 1);
+	ft_putcharn_fd(' ', (flags[0] ? fill_s : 0));
 	free(a);
 	return (s + (fill_z > 0 ? fill_z : 0) + (fill_s > 0 ? fill_s : 0));
 }

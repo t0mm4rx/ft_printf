@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:36 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/08 17:32:50 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/09 12:16:31 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,15 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	char	*ptr;
-	int		i;
 	int		count;
 
 	ptr = (char *)format;
-	i = 0;
 	count = 0;
 	va_start(args, format);
 	while (*ptr)
 	{
-		if (*ptr != '%')
-		{
-			ft_putchar_fd(*ptr, 1);
-			ptr++;
-			count++;
-		}
+		if (*ptr != '%' && ++count)
+			ft_putchar_fd(*(ptr++), 1);
 		else
 		{
 			if (count_stars(ptr) == 0)
@@ -49,76 +43,77 @@ int	ft_printf(const char *format, ...)
 
 int	handle_format(char **ptr, va_list args)
 {
-	int		flags[2];
-	int		width;
-	int		size;
-	char	type;
+	char		type;
+	t_params	params;
 
 	(*ptr)++;
-	get_flags(ptr, flags);
-	width = get_width(ptr);
-	size = get_size(ptr);
+	get_flags(ptr, params.flags);
+	params.width = get_width(ptr);
+	params.size = get_size(ptr);
 	type = **ptr;
 	(*ptr)++;
-	return (process(type, flags, width, size, args));
+	return (process(type, params, args));
 }
 
 int	handle_format_star(char **ptr, int arg, va_list args)
 {
-	int		flags[2];
-	int		width;
-	int		size;
-	char	type;
+	char		type;
+	t_params	params;
 
 	(*ptr)++;
-	get_flags(ptr, flags);
+	get_flags(ptr, params.flags);
 	if (**ptr == '*')
 	{
-		width = arg;
+		params.width = arg;
 		(*ptr)++;
 	}
 	else
-		width = get_width(ptr);
+		params.width = get_width(ptr);
 	if ((*ptr)[1] == '*')
 	{
-		size = arg;
+		params.size = arg;
 		(*ptr) += 2;
 	}
 	else
-		size = get_size(ptr);
+		params.size = get_size(ptr);
 	type = **ptr;
 	(*ptr)++;
-	return (process(type, flags, width, size, args));
+	return (process(type, params, args));
 }
 
 int	handle_format_star2(char **ptr, int arg1, int arg2, va_list args)
 {
-	int		flags[2];
-	char	type;
+	t_params	params;
+	char		type;
 
 	(*ptr)++;
-	get_flags(ptr, flags);
+	get_flags(ptr, params.flags);
 	(*ptr) += 3;
 	type = **ptr;
 	(*ptr)++;
-	return (process(type, flags, arg1, arg2, args));
+	params.width = arg1;
+	params.size = arg2;
+	return (process(type, params, args));
 }
 
-int	process(char type, int flags[2], int width, int size, va_list args)
+int	process(char type, t_params params, va_list args)
 {
 	if (type == 'd' || type == 'i')
-		return (putnbr(va_arg(args, int), width, size, flags));
+		return (putnbr(va_arg(args, int), params));
 	if (type == 'u')
-		return (putunbr(va_arg(args, int), width, size, flags));
+		return (putunbr(va_arg(args, int), params));
 	if (type == 'x' || type == 'X')
-		return (puthex(va_arg(args, int), width, size, flags, (type == 'X')));
+		return (puthex(va_arg(args, int), params, (type == 'X')));
 	if (type == 's')
-		return (putstr(va_arg(args, char*), width, size, flags));
+		return (putstr(va_arg(args, char*), params));
 	if (type == 'c')
-		return (putchar_((char)va_arg(args, int), width, size, flags));
+		return (putchar_((char)va_arg(args, int), params));
 	if (type == 'p')
-		return (putptr(va_arg(args, void*), width, size, flags));
+		return (putptr(va_arg(args, void*), params));
 	if (type == '%')
-		return (putstr("%", width, 1, flags));
+	{
+		params.size = 1;
+		return (putstr("%", params));
+	}
 	return (0);
 }

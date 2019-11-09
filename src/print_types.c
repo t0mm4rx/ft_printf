@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/09 12:23:59 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/09 12:30:27 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ unsigned int	putstr(char *s, t_params params)
 		return (putstr("(null)", params));
 	length = ft_strlen(s);
 	if (params.size >= 0)
-		length = min((params.size < 0 ? -params.size : params.size), ft_strlen(s));
+	{
+		length = min((params.size < 0 ? -params.size : params.size),
+				ft_strlen(s));
+	}
 	if (params.width == 0 || params.width < length)
 		fill = 0;
 	else
@@ -73,12 +76,12 @@ unsigned int	putnbr(long int n, t_params params)
 		a = ft_calloc(1, sizeof(char));
 	else
 		a = ft_itoa(abs_(n));
-	s = ft_strlen(a);
 	fill_z = 0;
 	fill_s = 0;
-	if (params.size > (int)s + (n < 0 ? 1 : 0))
+	if ((s = ft_strlen(a)) >= 0 && params.size > (int)s + (n < 0 ? 1 : 0))
 		fill_z = params.size - s;
-	if (params.flags[1] && params.width > s + (n < 0 ? 1 : 0) && params.size == -1)
+	if (params.flags[1] && params.width > s + (n < 0 ? 1 : 0) &&
+			params.size == -1)
 		fill_z = params.width - s - (n < 0 ? 1 : 0);
 	if (params.width > fill_z + s + (n < 0 ? 1 : 0))
 		fill_s = params.width - (fill_z + s + (n < 0 ? 1 : 0));

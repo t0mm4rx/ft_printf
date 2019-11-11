@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:14 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/09 12:17:50 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/11 12:55:24 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <stdlib.h>
 
 typedef struct		s_params {
-	unsigned int		width;
-	int					size;
-	int					flags[3];
+	int	width;
+	int	size;
+	int	flags[3];
 }					t_params;
 
 int					ft_printf(const char *format, ...);
@@ -34,7 +34,7 @@ unsigned int		putchar_(char c, t_params params);
 unsigned int		putnbr(long int n, t_params params);
 unsigned int		putunbr(long int n, t_params params);
 unsigned int		puthex(long int n, t_params params, int caps);
-unsigned int		abs_(long int n);
+int					abs_(long int n);
 char				*ft_itoa_hex(unsigned long int n, int caps);
 unsigned int		putptr(void *ptr, t_params params);
 void				replace_stars(char **format, ...);

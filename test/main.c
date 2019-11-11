@@ -46,7 +46,18 @@ int main ()
 	//printf("wxF%09.5XLKqbmvDfa0\n", 0);
 	//ft_printf("wxF%09.5XLKqbmvDfa0\n", 0);
 
-	int a = ft_printf("%%%0X\n", -2147483647);
-	int b = printf("%%%0X\n", -2147483647);
-	printf("%d / %d\n", a, b);
+	//int a = ft_printf("%%%0X\n", -2147483647);
+	//int b = printf("%%%0X\n", -2147483647);
+	//printf("%d / %d\n", a, b);
+
+	//ft_printf("%*.*s\n", 10, -1000, "Salut !");
+	//printf("%*.*s\n", 10, -1000, "Salut !");
+
+	//printf("hMGz%s7TUdRFX%*c%X\n", "KeBF0np0A6T65L3shUmgPBn", 8, 'B', 10);
+	//ft_printf("hMGz%s7TUdRFX%*c%X\n", "KeBF0np0A6T65L3shUmgPBn", 8, 'B', 10);
+	//ft_printf("%-*i--\n", -5, 0);
+	//printf("%-*i--\n", -5, 0);
+
+	printf("Pjp1p%8X\n", -2147483646);
+	ft_printf("Pjp1p%8X\n", -2147483646);
 }

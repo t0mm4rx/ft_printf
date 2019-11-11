@@ -6,27 +6,27 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:51:47 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/06 16:43:26 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/11 12:41:34 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int				min(int a, int b)
+int	min(int a, int b)
 {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-int				max(int a, int b)
+int	max(int a, int b)
 {
 	if (a > b)
 		return (a);
 	return (b);
 }
 
-unsigned int	abs_(long int a)
+int	abs_(long int a)
 {
 	if (a < 0)
 		return (-a);

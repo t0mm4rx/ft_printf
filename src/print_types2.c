@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:52:30 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/09 12:23:07 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/12 15:22:26 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ unsigned int	putptr(void *ptr, t_params params)
 		fill_z = params.size - s;
 	else
 		fill_z = 0;
-	if (params.width > s + fill_z)
+	if (params.width > (int)s + fill_z)
 		fill_s = params.width - (s + fill_z);
 	else
 		fill_s = 0;

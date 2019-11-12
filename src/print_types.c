@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/12 15:05:49 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/12 16:12:49 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,9 @@ unsigned int	putnbr(long int n, t_params params)
 
 unsigned int	putunbr(long int n, t_params params)
 {
-	long int nb;
-
-	nb = n;
 	if (n < 0)
-		nb = 4294967296 + n;
-	return (putnbr(nb, params));
+		n = 4294967296 + n;
+	return (putnbr(n, params));
 }
 
 unsigned int	puthex(long int n, t_params params, int caps)
@@ -108,21 +105,7 @@ unsigned int	puthex(long int n, t_params params, int caps)
 	a = ((n == 0 && params.size == 0) ? ft_calloc(1, sizeof(char)) :
 			ft_itoa_hex(n, caps));
 	s = ft_strlen(a);
-	fill_z = 0;
-	fill_s = 0;
-	if (abs_(params.size) > (int)s && params.size > 0)
-		fill_z = abs_(params.size) - s;
-	if (params.flags[1] && params.width > params.size && params.size < 0)
-		fill_z = abs_(params.width) - s;
-	if (abs_(params.width) > fill_z + (int)s)
-		fill_s = abs_(params.width) - (s + fill_z) - (n < 0);
-	else
-		fill_s = 0;
-	if (params.size < 0 && params.width < 0)
-	{
-		fill_s = max(fill_s, fill_z);
-		fill_z = 0;
-	}
+	fill_hex(&fill_s, &fill_z, (int)s, params);
 	ft_putcharn_fd(' ', ((!params.flags[0] && params.width >= 0) ? fill_s : 0));
 	ft_putcharn_fd('0', ((params.width > 0 || params.size > 0) ? fill_z : 0));
 	ft_putstr_fd(a, 1);

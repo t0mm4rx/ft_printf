@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:14 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/12 10:49:12 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/12 16:00:45 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct		s_params {
 	int	width;
@@ -35,7 +34,7 @@ unsigned int		putchar_(char c, t_params params);
 unsigned int		putnbr(long int n, t_params params);
 unsigned int		putunbr(long int n, t_params params);
 unsigned int		puthex(long int n, t_params params, int caps);
-int					abs_(long int n);
+long int			abs_(long int n);
 char				*ft_itoa_hex(unsigned long int n, int caps);
 unsigned int		putptr(void *ptr, t_params params);
 void				replace_stars(char **format, ...);
@@ -48,4 +47,5 @@ int					handle_format_star2(char **ptr, int arg1, int arg2,
 		va_list args);
 int					process(char type, t_params params, va_list args);
 void				ft_putcharn_fd(char c, int n);
+void				fill_hex(int *fill_s, int *fill_z, int s, t_params args);
 #endif

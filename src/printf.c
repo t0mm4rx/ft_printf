@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:17:36 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/09 12:16:31 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/12 16:21:42 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	handle_format_star(char **ptr, int arg, va_list args)
 	}
 	else
 		params.width = get_width(ptr);
-	if ((*ptr)[1] == '*')
+	if (**ptr == '.' && (*ptr)[1] == '*')
 	{
 		params.size = arg;
 		(*ptr) += 2;

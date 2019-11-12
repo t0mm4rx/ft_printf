@@ -6,7 +6,7 @@
 /*   By: tmarx <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:31:58 by tmarx             #+#    #+#             */
-/*   Updated: 2019/11/12 15:01:27 by tmarx            ###   ########.fr       */
+/*   Updated: 2019/11/12 15:05:49 by tmarx            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,11 @@ unsigned int	puthex(long int n, t_params params, int caps)
 		fill_s = abs_(params.width) - (s + fill_z) - (n < 0);
 	else
 		fill_s = 0;
+	if (params.size < 0 && params.width < 0)
+	{
+		fill_s = max(fill_s, fill_z);
+		fill_z = 0;
+	}
 	ft_putcharn_fd(' ', ((!params.flags[0] && params.width >= 0) ? fill_s : 0));
 	ft_putcharn_fd('0', ((params.width > 0 || params.size > 0) ? fill_z : 0));
 	ft_putstr_fd(a, 1);
